@@ -59,7 +59,7 @@ class Cell():
         self._x2 = x_bottom
         self._y2 = y_bottom
         self._win = window
-        self.draw_walls(_x1, _x2, _y1, _y2)
+        self.draw_walls(self._x1, self._x2, self._y1, self._y2)
 
     def draw_walls(self, _x1, _x2, _y1, _y2):
         if self.has_left_wall:
