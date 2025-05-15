@@ -12,7 +12,7 @@ class Cell():
         self._y2 = None
         self._win = win
 
-    def draw_walls(self, x1, x2, y1, y2):
+    def draw_walls(self, x1, y1, x2, y2):
         self._x1 = x1
         self._y1 = y1
         self._x2 = x2
