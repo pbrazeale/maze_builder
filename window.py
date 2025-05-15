@@ -9,14 +9,14 @@ class Window():
         self.window_on = False
         self.__root.protocol("WM_DELETE_WINDOW", self.close)
 
-        def redraw(self):
-            self.__root.update_idletasks()
-            self.__root.update()
-        
-        def wait_for_close(self):
-            self.window_on = True
-            while self.window_on:
-                self.redraw()
-        
-        def close(self):
-            self.window_on = False
+    def redraw(self):
+        self.__root.update_idletasks()
+        self.__root.update()
+    
+    def wait_for_close(self):
+        self.window_on = True
+        while self.window_on:
+            self.redraw()
+    
+    def close(self):
+        self.window_on = False
