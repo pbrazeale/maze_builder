@@ -16,4 +16,6 @@ class Window():
             self.window_on = True
             while self.window_on:
                 self.redraw()
-            
+        
+        def close(self):
+            self.window_on = False
