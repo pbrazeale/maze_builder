@@ -21,3 +21,12 @@ class Window():
     
     def close(self):
         self.__window_on = False
+
+class Point():
+    def __init__(self, x, y):
+        self.__x = x
+        self.__y = y
+
+class Line():
+    
+
