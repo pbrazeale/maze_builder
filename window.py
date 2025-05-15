@@ -7,6 +7,7 @@ class Window():
         self.__canvas = Canvas(self.__root, width=width, height=height)
         self.__canvas.pack()
         self.window_on = False
+        self.__root.protocol("WM_DELETE_WINDOW", self.close)
 
         def redraw(self):
             self.__root.update_idletasks()
