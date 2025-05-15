@@ -28,5 +28,9 @@ class Point():
         self.__y = y
 
 class Line():
-    
+    def __init__(self, point_a, point_b):
+        self.__point_a = point_a
+        self.__point_b = point_b
+        
+
 
