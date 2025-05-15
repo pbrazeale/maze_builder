@@ -1,4 +1,4 @@
-from graphics import Window, Point, Line
+from graphics import Window, Point, Line, Cell
 
 def main ():
     win = Window(800, 600)
@@ -8,6 +8,7 @@ def main ():
     first_line = Line(start_point, end_point)
     win.draw_line(first_line, "red")
 
+    maze = Cell(win, 10, 10, 60, 60)
 
 
     win.wait_for_close()
