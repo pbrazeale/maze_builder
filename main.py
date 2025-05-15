@@ -1,4 +1,4 @@
-from window import *
+from window import Window, wait_for_close
 
 def main ():
     win = Window(800, 600)
