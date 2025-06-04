@@ -1,4 +1,5 @@
-
+from cell import Cell
+import time
 
 class Maze():
     def __init__(
@@ -9,27 +10,39 @@ class Maze():
         num_cols,
         cell_size_x,
         cell_size_y,
-        win,
+        win=None,
     ):
-        self.x1 = x1
-        self.y1 = y1
-        self.num_rows = num_rows
-        self.num_cols = num_cols
-        self.cell_size_x = cell_size_x
-        self.cell_size_y = cell_size_y
-        self.win = win
-        self._create_cells()
+        self.__x1 = x1
+        self.__y1 = y1
+        self.__num_rows = num_rows
+        self.__num_cols = num_cols
+        self.__cell_size_x = cell_size_x
+        self.__cell_size_y = cell_size_y
+        self.__win = win
+        self.__cells = []
+        self.__create_cells()
+        
 
 
-
-    def _create_cells(self):
-        self._cells = []
-
-        for i in self._cells:
-            for j in self._cells[i]:
-                self._draw_cells(i,j)
+    def __create_cells(self):
+        for i in range(0, self.__num_cols):
+            self.__cells.append([])
+            for j in range(0, self.__num_rows):
+                self.__cells[i].append(Cell(self.__win)) 
+                self.__draw_cell(i, j)
     
-    def _draw_cells(self, i, j):
-        pass
+    def __draw_cell(self, i, j):
+        if self.__win == None:
+            return
+        x1 = self.__x1 + (self.__cell_size_x * i)
+        x2 = x1 + self.__cell_size_x
+        y1 = self.__y1 + (self.__cell_size_y * j)
+        y2 = y1 + self.__cell_size_y
+        self.__cells[i][j].draw_walls(x1, y1, x2, y2)
+        self.__animate()
     
-    def _animate(self):
+    def __animate(self):
+        if self.__win == None:
+            return
+        self.__win.redraw()
+        time.sleep(0.05)
