@@ -64,14 +64,14 @@ class Maze():
         while True:
             to_visit = []
             # up
-            if j >= 1 and  self.__cell[i][j-1]:
+            if j >= 1 and self.__cell[i][j-1].visited == False:
                 to_visit.append((i,j-1))
             # down
-            if j < (self.__num_rows - 1) and self.__cell[i][j+1]:
+            if j < (self.__num_rows - 1) and self.__cell[i][j+1].visited == False:
                 to_visit.append((i,j+1))
             # left
-            if i >= 1 and self.__cell[i-1][j]:
+            if i >= 1 and self.__cell[i-1][j].visited == False:
                 to_visit.append((i-1,j))
             # right
-            if i < (self.__num_cols - 1) and self.__cell[i+1][j]:
+            if i < (self.__num_cols - 1) and self.__cell[i+1][j].visited == False:
                 to_visit.append((i+1,j))
