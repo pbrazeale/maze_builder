@@ -59,19 +59,45 @@ class Maze():
         self.__draw_cell(self.__num_cols - 1, self.__num_rows - 1)
 
     def __break_walls_r(self, i, j):
-        start_cell = self.__cell[i][j]
+        start_cell = self.__cells[i][j]
         start_cell.visited = True
         while True:
             to_visit = []
             # up
-            if j >= 1 and self.__cell[i][j-1].visited == False:
+            if j >= 1 and self.__cells[i][j-1].visited == False:
                 to_visit.append((i,j-1))
             # down
-            if j < (self.__num_rows - 1) and self.__cell[i][j+1].visited == False:
+            if j < (self.__num_rows - 1) and self.__cells[i][j+1].visited == False:
                 to_visit.append((i,j+1))
             # left
-            if i >= 1 and self.__cell[i-1][j].visited == False:
+            if i >= 1 and self.__cells[i-1][j].visited == False:
                 to_visit.append((i-1,j))
             # right
-            if i < (self.__num_cols - 1) and self.__cell[i+1][j].visited == False:
+            if i < (self.__num_cols - 1) and self.__cells[i+1][j].visited == False:
                 to_visit.append((i+1,j))
+            if len(to_visit) == 0:
+                self.__draw_cell(i, j)
+                return
+                        
+            pair = random.choice(to_visit)
+            
+            if pair[1] == j:
+                #left
+                if pair[0] < i:
+                    self.__cells[pair[0]][pair[1]].has_right_wall = False
+                    self.__cells[i][j].has_left_wall = False
+                #right
+                if pair[0] > i:
+                    self.__cells[pair[0]][pair[1]].has_left_wall = False
+                    self.__cells[i][j].has_right_wall = False
+            #down
+            elif pair[1] > j:
+                self.__cells[pair[0]][pair[1]].has_top_wall = False
+                self.__cells[i][j].has_bottom_wall = False
+            #up
+            else:
+                self.__cells[pair[0]][pair[1]].has_bottom_wall = False
+                self.__cells[i][j].has_top_wall = False
+
+            self.__draw_cell(pair[0], pair[1])
+            self.__break_walls_r(pair[0], pair[1])
