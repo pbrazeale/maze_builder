@@ -24,6 +24,7 @@ class Maze():
         self.__cells = []
         self.__create_cells()
         self.__break_entrance_and_exit()
+        self.__break_walls_r(0,0)
             
         if seed != None:
             self.__seed = random.seed(seed)
