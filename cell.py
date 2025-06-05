@@ -11,6 +11,8 @@ class Cell():
         self._x2 = None
         self._y2 = None
         self._win = win
+        self.visited = False
+
 
     def draw_walls(self, x1, y1, x2, y2):
         if self._win == None:
@@ -59,5 +61,4 @@ class Cell():
 
         connect = Line(Point(start_x, start_y), Point(end_x, end_y))
         self._win.draw_line(connect, fill_color)
-
 
