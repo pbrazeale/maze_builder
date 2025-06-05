@@ -19,18 +19,30 @@ class Cell():
         self._y1 = y1
         self._x2 = x2
         self._y2 = y2
+        left_wall = Line(Point(x1, y2), Point(x1, y1))
+        top_wall = Line(Point(x1, y1), Point(x2, y1))
+        right_wall = Line(Point(x2, y1), Point(x2, y2))
+        bottom_wall = Line(Point(x2, y2), Point(x1, y2))
+
         if self.has_left_wall:
-            left_wall = Line(Point(x1, y2), Point(x1, y1))
             self._win.draw_line(left_wall)
+        else:
+            self._win.draw_line(left_wall, "white")
+
         if self.has_top_wall:
-            top_wall = Line(Point(x1, y1), Point(x2, y1))
             self._win.draw_line(top_wall)
+        else:
+            self._win.draw_line(top_wall, "white")
+                            
         if self.has_right_wall:
-            right_wall = Line(Point(x2, y1), Point(x2, y2))
             self._win.draw_line(right_wall)
+        else:
+            self._win.draw_line(right_wall, "white")
+
         if self.has_bottom_wall:
-            bottom_wall = Line(Point(x2, y2), Point(x1, y2))
             self._win.draw_line(bottom_wall)
+        else:
+            self._win.draw_line(bottom_wall, "white")
 
     def draw_move(self, to_cell, undo=False):
         if self._win == None:
